@@ -315,7 +315,7 @@ function pastLaunch() {
     for(let i = pastLaunchData.length -2; i >= 0; i--) {
     //past data entries
         //Assign the data into variables
-        let pastMissionLogo = pastLaunchData[i]['links']['mission_patch'];  
+        let pastMissionLogo = pastLaunchData[i]['links']['mission_patch_small'];  
         let pastDetails = pastLaunchData[i]['details'];;
         let pastFlightNumber = pastLaunchData[i]['flight_number'];
         let pastMissionName = pastLaunchData[i]['mission_name'];
