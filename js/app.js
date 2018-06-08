@@ -237,7 +237,7 @@ function latestLaunch() {
                 card.setAttribute('class', 'card');
         
                 const h3 = document.createElement('h3');
-                h3.textContent = ` latest - ${latestMissionName}`;
+                h3.textContent = ` Latest - ${latestMissionName}`;
 
                 const h4 = document.createElement('h4');
                 if(latestDetails !== null){
