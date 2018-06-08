@@ -21,6 +21,7 @@ h3 {
   background-image: linear-gradient(120deg, #0F2027 , #203A43, #2C5364);
   font-size: 1.5rem;
   color: white;
+  font-weight: 400;
 }
 
 h4 {
@@ -29,6 +30,7 @@ h4 {
   line-height: 1.5em;
   margin: 0;
   text-align: center;
+  font-weight: 400;
 }
 
 img {
@@ -70,6 +72,7 @@ li {
   margin: 1rem;
   background: white;
   border-radius: 50px;
+  border: white 1px solid;
   box-shadow: 2px 4px 40px rgba(75, 75, 75, 0.1);
   transition: all .2s linear;
   overflow: hidden;
@@ -86,11 +89,7 @@ li {
   .card {
     flex: 1 1 40%;
   }
-  .container {
-    max-width: 1000px;
 }
-}
-
 
 @media screen and (min-width: 900px) {
   .card {
