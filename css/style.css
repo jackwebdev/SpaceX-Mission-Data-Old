@@ -86,7 +86,11 @@ li {
   .card {
     flex: 1 1 40%;
   }
+  .container {
+    max-width: 1000px;
 }
+}
+
 
 @media screen and (min-width: 900px) {
   .card {
