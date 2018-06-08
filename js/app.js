@@ -379,10 +379,8 @@ function pastLaunch() {
                     newDate.setTime(pastLaunchDate * 1000);
                     dateStringGB = newDate.toLocaleDateString('en-GB', options);
                     time12Hour = newDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });;
-                
-        
+         
             // Generate the HTML box
-        
                 const card = document.createElement('div');
                 card.setAttribute('class', 'card');
         
