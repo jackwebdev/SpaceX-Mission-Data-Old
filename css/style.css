@@ -66,6 +66,8 @@ li {
 .container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .card {
@@ -82,6 +84,27 @@ li {
   box-shadow: 2px 4px 40px rgba(111, 111, 111, 0.379);
   transform: translate3D(0, -4px, 0);
 }
+.btn {
+  display: block;
+  text-align: center;
+}
+.btn button {
+  border-radius: none;
+  background-image: linear-gradient(90deg, #000428, #004e92);
+  border-radius: 100px;
+  border: none;
+  width: 180px;
+  height: 50px;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1.1em;
+  text-align: center;
+  cursor: pointer;
+}
+.btn button:hover {
+  background-image: linear-gradient(90deg, #030f7e, #036dcb);
+}
+.btn button:focus {outline:0;}
 
 /* Media Queries */
 

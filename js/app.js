@@ -24,6 +24,17 @@ upcomingLaunchRequest();
 latestLaunchRequest();
 pastLaunchRequest();
 
+function timeConverter(apiData){
+    // Time Converter
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let newDate = new Date();
+    newDate.setTime(apiData * 1000);
+    dateStringGB = newDate.toLocaleDateString('en-GB', options);
+    time12Hour = newDate.toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true });
+    let timeGB = `${dateStringGB} - ${time12Hour}`;
+    return timeGB;
+}
+
 /**** 
     Upcoming mission data
 ****/
@@ -75,16 +86,10 @@ function upcomingLaunch() {
             let upcomingPayloadType = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['payload_type'];
             let upcomingPayloadCustomer = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['customers'];
             let upcomingPayloadOrbit = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['orbit'];
-            let upcomingPayloadKG = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['payload_mass_kg'];
-            
+            let upcomingPayloadKG = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['payload_mass_kg'];         
         
             // Time Converter
-                    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    let newDate = new Date();
-                    newDate.setTime(upcomingLaunchDate * 1000);
-                    dateStringGB = newDate.toLocaleDateString('en-GB', options);
-                    time12Hour = newDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });;
-                
+            gbTime = timeConverter(upcomingLaunchDate);
         
             // Generate the HTML box
         
@@ -110,31 +115,33 @@ function upcomingLaunch() {
                 const ul = document.createElement('ul');
                 
                 const li = document.createElement('ul');
-                li.innerHTML += `<li><strong>Rocket:</strong> ${upcomingRocketName}</li>`;
-                li.innerHTML += `<li><strong>Flight Number:</strong> ${upcomingFlightNumber}</li>`;
-                li.innerHTML += `<li><strong>Launch Date:</strong> ${dateStringGB} - ${time12Hour}</li>`;
-                li.innerHTML += `<li><strong>Location:</strong> ${upcomingLaunchLoc}</li>`;
-                li.innerHTML += `<li><strong>Payload Type:</strong> ${upcomingPayloadType}</li>`;
-                li.innerHTML += `<li><strong>Customer:</strong> ${upcomingPayloadCustomer}</li>`;
-                li.innerHTML += `<li><strong>Orbit:</strong> ${upcomingPayloadOrbit}</li>`;
-                li.innerHTML += `<li><strong>Payload Mass:</strong> ${upcomingPayloadKG} kg</li>`;
+                ul.innerHTML += `<li><strong>Rocket:</strong> ${upcomingRocketName}</li>`;
+                ul.innerHTML += `<li><strong>Flight Number:</strong> ${upcomingFlightNumber}</li>`;
+                ul.innerHTML += `<li><strong>Launch Date:</strong> ${gbTime}</li>`;
+                ul.innerHTML += `<li><strong>Location:</strong> ${upcomingLaunchLoc}</li>`;
+                ul.innerHTML += `<li><strong>Payload Type:</strong> ${upcomingPayloadType}</li>`;
+                ul.innerHTML += `<li><strong>Customer:</strong> ${upcomingPayloadCustomer}</li>`;
+                ul.innerHTML += `<li><strong>Orbit:</strong> ${upcomingPayloadOrbit}</li>`;
+                ul.innerHTML += `<li><strong>Payload Mass:</strong> ${upcomingPayloadKG} kg</li>`;
 
                 if( upcomingLandSuccess !== null) {    
-                    li.innerHTML += `<li><strong>Land Success:</strong> ${upcomingLandSuccess}</li>`;
+                    ul.innerHTML += `<li><strong>Land Success:</strong> ${upcomingLandSuccess}</li>`;
                 };
                 
                 if( upcomingSuccess !== null) { 
-                    li.innerHTML += `<li><strong>Launch Success:</strong> ${upcomingSuccess}</li>`;
+                    ul.innerHTML += `<li><strong>Launch Success:</strong> ${upcomingSuccess}</li>`;
 
                 };
                 
                 if( upcomingVideoLink !== null) { 
-                li.innerHTML += `<li><strong>Video Link:</strong> <a href='${upcomingVideoLink}' target="_blank">Watch Stream.</a></li>`;
+                   ul.innerHTML += `<li><a class="btn" href="${upcomingVideoLink}" target="_blank"><button>WATCH STREAM</button></a></li>`;
+                } else {
+                    ul.innerHTML += `<li><a class="btn"><button>More soon...</button></a></li>`;
+
                 }
             
                 if (upcomingPresskit !== null) {
-                    $(".upcomingRow1Data").append('<p><strong>PDF Information:</strong>' + ' <a href=' + upcomingPresskit + ' target="_blank">Open me...</a>' + '</p>');
-                    li.innerHTML += `<li><strong>PDF Information:</strong> <a href='${upcomingPresskit}' target="_blank">Read PDF.</a></li>`;
+                    ul.innerHTML += `<li><a class="btn" href="${upcomingPresskit}" target="_blank"><button>READ PDF</button></a></li>`;
             }
 
             container.appendChild(card);
@@ -142,7 +149,7 @@ function upcomingLaunch() {
             card.appendChild(img);
             card.appendChild(h4);
             card.appendChild(ul);
-            ul.appendChild(li);
+            // ul.appendChild(li);
             // card.appendChild(p);
             
             //Test name.
@@ -221,15 +228,9 @@ function latestLaunch() {
             let latestPayloadCustomer = latestLaunchData['rocket']['second_stage']['payloads'][0]['customers'];
             let latestPayloadOrbit = latestLaunchData['rocket']['second_stage']['payloads'][0]['orbit'];
             let latestPayloadKG = latestLaunchData['rocket']['second_stage']['payloads'][0]['payload_mass_kg'];
-            
-        
+                  
             // Time Converter
-                    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    let newDate = new Date();
-                    newDate.setTime(latestLaunchDate * 1000);
-                    dateStringGB = newDate.toLocaleDateString('en-GB', options);
-                    time12Hour = newDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });;
-                
+            gbTime = timeConverter(latestLaunchDate);
         
             // Generate the HTML box
         
@@ -243,7 +244,7 @@ function latestLaunch() {
                 if(latestDetails !== null){
                     h4.textContent = `${latestDetails}`;
                 } else {
-                    h4.textContent = `Flight No: ${latestFlightNumber} launched the ${latestRocketName} on ${dateStringGB} at ${time12Hour} +`;
+                    h4.innerHTML = `<strong>Flight No: ${latestFlightNumber}</strong> launched the <strong>${latestRocketName}</strong> on <strong>${dateStringGB}</strong> at <strong>${time12Hour}</strong>`;
                 }
 
                 const img = document.createElement('img');
@@ -261,29 +262,29 @@ function latestLaunch() {
                 const ul = document.createElement('ul');
                 
                 const li = document.createElement('ul');
-                li.innerHTML += `<li><strong>Rocket:</strong> ${latestRocketName}</li>`;
-                li.innerHTML += `<li><strong>Flight Number:</strong> ${latestFlightNumber}</li>`;
-                li.innerHTML += `<li><strong>Launch Date:</strong> ${dateStringGB} - ${time12Hour}</li>`;
-                li.innerHTML += `<li><strong>Location:</strong> ${latestLaunchLoc}</li>`;
-                li.innerHTML += `<li><strong>Payload Type:</strong> ${latestPayloadType}</li>`;
-                li.innerHTML += `<li><strong>Customer:</strong> ${latestPayloadCustomer}</li>`;
-                li.innerHTML += `<li><strong>Orbit:</strong> ${latestPayloadOrbit}</li>`;
-                li.innerHTML += `<li><strong>Payload Mass:</strong> ${latestPayloadKG} kg</li>`;
+                ul.innerHTML += `<li><strong>Rocket:</strong> ${latestRocketName}</li>`;
+                ul.innerHTML += `<li><strong>Flight Number:</strong> ${latestFlightNumber}</li>`;
+                ul.innerHTML += `<li><strong>Launch Date:</strong> ${gbTime}</li>`;
+                ul.innerHTML += `<li><strong>Location:</strong> ${latestLaunchLoc}</li>`;
+                ul.innerHTML += `<li><strong>Payload Type:</strong> ${latestPayloadType}</li>`;
+                ul.innerHTML += `<li><strong>Customer:</strong> ${latestPayloadCustomer}</li>`;
+                ul.innerHTML += `<li><strong>Orbit:</strong> ${latestPayloadOrbit}</li>`;
+                ul.innerHTML += `<li><strong>Payload Mass:</strong> ${latestPayloadKG} kg</li>`;
 
                 if( latestLandSuccess !== null) {    
-                    li.innerHTML += `<li><strong>Land Success:</strong> ${latestLandSuccess}</li>`;
+                    ul.innerHTML += `<li><strong>Land Success:</strong> ${latestLandSuccess}</li>`;
                 };
                 
                 if( latestSuccess !== null) { 
-                    li.innerHTML += `<li><strong>Launch Success:</strong> ${latestSuccess}</li>`;
+                    ul.innerHTML += `<li><strong>Launch Success:</strong> ${latestSuccess}</li>`;
                 };
                 
                 if( latestVideoLink !== null) { 
-                li.innerHTML += `<li><strong>Video Link:</strong> <a href='${latestVideoLink}' target="_blank">Watch Stream.</a></li>`;
+                   ul.innerHTML += `<li><a class="btn" href="${latestVideoLink}" target="_blank"><button>WATCH STREAM</button></a></li>`;
                 }
             
                 if (latestPresskit !== null) {
-                    li.innerHTML += `<li><strong>PDF Information:</strong> <a href='${latestPresskit}' target="_blank">Read PDF.</a></li>`;
+                    ul.innerHTML += `<li><a class="btn" href="${latestPresskit}" target="_blank"><button>READ PDF</button></a></li>`;
                 }
 
                 container.appendChild(card);
@@ -292,7 +293,6 @@ function latestLaunch() {
                 card.appendChild(h4);
                 card.appendChild(p);
                 card.appendChild(ul);
-                ul.appendChild(li);
                 // card.appendChild(p);
                 
                 //Test name.
@@ -374,11 +374,7 @@ function pastLaunch() {
             
         
             // Time Converter
-                    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    let newDate = new Date();
-                    newDate.setTime(pastLaunchDate * 1000);
-                    dateStringGB = newDate.toLocaleDateString('en-GB', options);
-                    time12Hour = newDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });;
+            gbTime = timeConverter(pastLaunchDate);
          
             // Generate the HTML box
                 const card = document.createElement('div');
@@ -388,10 +384,11 @@ function pastLaunch() {
                 h3.textContent = ` Past - ${pastMissionName}`;
 
                 const h4 = document.createElement('h4');
+                pastDetails = null;
                 if(pastDetails !== null){
                 h4.textContent = `${pastDetails}`;
                 } else {
-                    h4.textContent = `Flight No: ${pastFlightNumber} launched the ${pastRocketName} on ${dateStringGB} at ${time12Hour} +`;
+                    h4.innerHTML = `Flight No: ${pastFlightNumber} launched the ${pastRocketName} on <strong>${dateStringGB}</strong> at <strong>${time12Hour}</strong>`;
                 }
 
                 const img = document.createElement('img');
@@ -406,31 +403,31 @@ function pastLaunch() {
                 const ul = document.createElement('ul');
                 
                 const li = document.createElement('ul');
-                li.innerHTML += `<li><strong>Rocket:</strong> ${pastRocketName}</li>`;
-                li.innerHTML += `<li><strong>Flight Number:</strong> ${pastFlightNumber}</li>`;
-                li.innerHTML += `<li><strong>Launch Date:</strong> ${dateStringGB} - ${time12Hour}</li>`;
-                li.innerHTML += `<li><strong>Location:</strong> ${pastLaunchLoc}</li>`;
-                li.innerHTML += `<li><strong>Payload Type:</strong> ${pastPayloadType}</li>`;
-                li.innerHTML += `<li><strong>Customer:</strong> ${pastPayloadCustomer}</li>`;
-                li.innerHTML += `<li><strong>Orbit:</strong> ${pastPayloadOrbit}</li>`;
+                ul.innerHTML += `<li><strong>Rocket:</strong> ${pastRocketName}</li>`;
+                ul.innerHTML += `<li><strong>Flight Number:</strong> ${pastFlightNumber}</li>`;
+                ul.innerHTML += `<li><strong>Launch Date:</strong> ${gbTime}</li>`;
+                ul.innerHTML += `<li><strong>Location:</strong> ${pastLaunchLoc}</li>`;
+                ul.innerHTML += `<li><strong>Payload Type:</strong> ${pastPayloadType}</li>`;
+                ul.innerHTML += `<li><strong>Customer:</strong> ${pastPayloadCustomer}</li>`;
+                ul.innerHTML += `<li><strong>Orbit:</strong> ${pastPayloadOrbit}</li>`;
                 if (pastPayloadKG !== null) {
-                    li.innerHTML += `<li><strong>Payload Mass:</strong> ${pastPayloadKG} kg</li>`;
+                    ul.innerHTML += `<li><strong>Payload Mass:</strong> ${pastPayloadKG} kg</li>`;
                 }
                 if( pastLandSuccess !== null) {    
-                    li.innerHTML += `<li><strong>Land Success:</strong> ${pastLandSuccess}</li>`;
+                    ul.innerHTML += `<li><strong>Land Success:</strong> ${pastLandSuccess}</li>`;
                 };
                 
                 if( pastSuccess !== null) { 
-                    li.innerHTML += `<li><strong>Launch Success:</strong> ${pastSuccess}</li>`;
+                    ul.innerHTML += `<li><strong>Launch Success:</strong> ${pastSuccess}</li>`;
 
                 };
                 
                 if( pastVideoLink !== null) { 
-                li.innerHTML += `<li><strong>Video Link:</strong> <a href='${pastVideoLink}' target="_blank">Watch Stream.</a></li>`;
+                   ul.innerHTML += `<li><a class="btn" href="${pastVideoLink}" target="_blank"><button>WATCH STREAM</button></a></li>`;
                 }
             
                 if (pastPresskit !== null) {
-                    li.innerHTML += `<li><strong>PDF Information:</strong> <a href='${pastPresskit}' target="_blank">Read PDF.</a></li>`;
+                    ul.innerHTML += `<li><a class="btn" href="${pastPresskit}" target="_blank"><button>READ PDF</button></a></li>`;
                 }
 
                 container.appendChild(card);
@@ -439,7 +436,7 @@ function pastLaunch() {
                 card.append(h4);
                 card.appendChild(p);
                 card.appendChild(ul);
-                ul.appendChild(li);
+                // ul.appendChild(li);
                 // card.appendChild(p);
                 
                 //Test name.
