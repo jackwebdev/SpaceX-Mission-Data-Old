@@ -10,7 +10,6 @@
 }
 
 #root {
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -61,13 +60,12 @@ li {
 .spacex-logo {
   margin-top: 0; 
   margin-bottom: 0;
+  width: 350px;
+  height: auto;
 }
-
+/* 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+
 }
 
 .card {
@@ -78,9 +76,28 @@ li {
   box-shadow: 2px 4px 40px rgba(75, 75, 75, 0.1);
   transition: all .2s linear;
   overflow: hidden;
+} */
+
+.grid {
+  display: block;
+  counter-reset: grid-item;
+  margin: auto;
 }
 
-.card:hover {
+.grid-item { 
+  max-width: 400px;
+  height: auto;
+  float: left;
+  background: white;
+  border-radius: 50px;
+  border: white 1px solid;
+  box-shadow: 2px 4px 40px rgba(75, 75, 75, 0.1);
+  transition: all .2s linear;
+  overflow: hidden;
+  margin-bottom: 50px;
+ }
+
+.grid-item:hover {
   box-shadow: 2px 4px 40px rgba(111, 111, 111, 0.379);
   transform: translate3D(0, -4px, 0);
 }
@@ -96,8 +113,9 @@ li {
   width: 180px;
   height: 50px;
   color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
   font-weight: 800;
-  font-size: 1.1em;
   text-align: center;
   cursor: pointer;
 }
@@ -106,23 +124,15 @@ li {
 }
 .btn button:focus {outline:0;}
 
+.spacex-logo {
+  margin-bottom: 10px;
+}
+
 /* Media Queries */
 
-@media screen and (min-width: 600px) {
-  .card {
-    flex: 1 1 40%;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .card {
-    flex: 1 1 45%;
-  }
-}
-
 @media screen and (min-width: 100px) {
-  .spacex-logo {
-    width: 350px;
+  .grid-item {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
-

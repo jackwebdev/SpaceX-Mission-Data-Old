@@ -1,6 +1,54 @@
-/* ---- reset ---- */ body{ margin:0; padding:0;} canvas{ display: block;  } /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #012946; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ .count-particles{ background: #000022; position: absolute; top: 48px; left: 0; width: 80px; color: #13E8E9; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } .js-count-particles{ font-size: 1.1em; } #stats, .count-particles{ margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } .count-particles{ border-radius: 0 0 3px 3px; }
+/* ---- reset ---- */ body{ margin:0; padding:0; background-color: transparent;} canvas{ display: block;  } 
+/* ---- particles.js container ---- */ 
+#particles-js { 
+  position:absolute; 
+  width: 100%;
+  height: 100%;  
+  background-image: url(""); 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: 50% 50%; 
+  background: #003860;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #003860, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #003860, #000428) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-#particles-js{
+}
+ /* ---- stats.js ---- */ 
+ .count-particles { 
+   background: #000022; 
+  position: absolute; 
+  top: 48px; 
+  left: 0; 
+  width: 80px; 
+  color: #13E8E9; 
+  font-size: .8em; 
+  text-align: left; 
+  text-indent: 4px; 
+  line-height: 14px; 
+  padding-bottom: 2px; 
+  font-family: Helvetica, Arial, sans-serif; 
+  font-weight: bold; 
+} 
+
+.js-count-particles { 
+  font-size: 1.1em; 
+} 
+
+#stats, .count-particles { 
+  margin-top: 5px; 
+  margin-left: 5px; 
+} 
+
+#stats { 
+  border-radius: 3px 3px 0 0; 
+  overflow: hidden; 
+} 
+
+.count-particles { 
+  border-radius: 0 0 3px 3px; 
+}
+
+#particles-js {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -11,9 +59,135 @@
     z-index: -1;
   }
   
-  .body-particles{
+  .body-particles {
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
+  }
+
+  /* Credit to https://codepen.io/echoghi/pen/dMzaPb */
+  /* Star */
+  @keyframes particleShootStarAnimation
+  {
+      from {
+          left: -100px;
+      }
+      to {
+          left: calc( 100% + 100px );
+      }
+  }
+
+  @keyframes particleShootStarAnimationReverse
+  {
+      from {
+          right: 100px;
+      }
+      to {
+          right: calc( 100% + 100px );
+      }
+  }
+
+  .shoot{
+    position:fixed;
+    left:45%;
+    top:-100px;
+    width:1px;
+    height:1px;
+    background-color:white;
+    position:fixed;
+    animation-name:particleShootStarAnimation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform: rotate(20deg);
+  }
+  .shoot::before{
+    position:absolute;
+    display:block;
+    content:"";
+    width:100px;
+    right:1px;
+    top:0px;
+    height:1px;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(255,255,255,0.4) 100%); 
+  }
+
+
+  .shootReverse{
+    position:fixed;
+    right:45%;
+    top:-100px;
+    width:1px;
+    height:1px;
+    background-color:white;
+    position:fixed;
+    animation-name:particleShootStarAnimationReverse;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform: rotate(160deg);
+  }
+  .shootReverse::before{
+    position:absolute;
+    display:block;
+    content:"";
+    width:100px;
+    right:1px;
+    top:0px;
+    height:1px;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(255,255,255,0.4) 100%); 
+  }
+
+  .star-1{
+    animation-duration:5s;
+    top: 5%;
+    bottom: 5%;
+    transform: rotate(0deg);
+  }
+  .star-2{
+    animation-duration:9s;
+    transform: rotate(30deg);
+    top:-15%;
+  }
+  .star-3{
+    animation-duration:80s;
+    top:25%;
+    bottom: 42%
+  }
+  .star-4{
+    animation-duration:5s;
+    top:40%;
+    bottom: 20%;
+    transform: rotate(0deg);
+  }
+  .star-5{
+    animation-duration:14s;
+    top: 90%;
+    bottom: 21%;
+  }
+  .star-6{
+    animation-duration:12s;
+    top:27%;
+    bottom: 54%
+  }
+  .star-7{
+    animation-duration:14s;
+    top:17%;
+    bottom: 60%;
+    transform: rotate(170deg);
+  }
+  .star-8{
+    animation-duration:14s;
+    top: 47%;
+    bottom: 14%;
+  }
+  .star-9{
+    animation-duration:7s;
+    top:64%;
+    bottom: 41%
+  }
+  .star-10{
+    animation-duration:5s;
+    top: 95%;
+    bottom: 95%;
+    transform: rotate(180deg);
   }

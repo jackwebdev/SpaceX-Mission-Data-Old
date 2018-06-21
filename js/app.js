@@ -7,10 +7,10 @@ let upcomingLaunchData;
 const rootDiv = document.getElementById('root');
 const logo = document.createElement('img');
 logo.className = 'spacex-logo';
-logo.src = 'images/spacex_mission_data_logo.png';
+logo.src = 'images/SpaceX-Logo.png';
 
 const container = document.createElement('div');
-container.setAttribute('class', 'container');
+container.setAttribute('class', 'grid');
 
 root.appendChild(logo);
 root.appendChild(container);
@@ -94,7 +94,7 @@ function upcomingLaunch() {
             // Generate the HTML box
         
                 const card = document.createElement('div');
-                card.setAttribute('class', 'card');
+                card.setAttribute('class', 'grid-item');
         
                 const h3 = document.createElement('h3');
                 h3.textContent = ` Upcoming - ${upcomingMissionName}`;
@@ -157,7 +157,7 @@ function upcomingLaunch() {
             //Else show this if the data doesn't happen to load for what ever reason.
         } else {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card'); 
+            card.setAttribute('class', 'grid-item'); 
 
             const h3 = document.createElement('h3');
             h3.textContent = ` No Data`;
@@ -235,7 +235,7 @@ function latestLaunch() {
             // Generate the HTML box
         
                 const card = document.createElement('div');
-                card.setAttribute('class', 'card');
+                card.setAttribute('class', 'grid-item');
         
                 const h3 = document.createElement('h3');
                 h3.textContent = ` Latest - ${latestMissionName}`;
@@ -299,7 +299,7 @@ function latestLaunch() {
                 // console.log(latestMissionName);
         } else {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card'); 
+            card.setAttribute('class', 'grid-item'); 
 
             const h3 = document.createElement('h3');
             h3.textContent = ` No Data`;
@@ -378,7 +378,7 @@ function pastLaunch() {
          
             // Generate the HTML box
                 const card = document.createElement('div');
-                card.setAttribute('class', 'card');
+                card.setAttribute('class', 'grid-item');
         
                 const h3 = document.createElement('h3');
                 h3.textContent = ` Past - ${pastMissionName}`;
@@ -444,7 +444,7 @@ function pastLaunch() {
             }
         } else {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card'); 
+            card.setAttribute('class', 'grid-item'); 
 
             const h3 = document.createElement('h3');
             h3.textContent = ` No Data`;
@@ -462,6 +462,14 @@ function pastLaunch() {
             card.appendChild(img);
             card.appendChild(h4);
         }
-};  
-
-
+}; 
+setTimeout(gridMasonry, 1000);
+    function gridMasonry(){
+    return msnry = new Masonry( '.grid', {
+        itemSelector: '.grid-item',
+        horizontalOrder: true,
+        gutter: 20,
+        fitWidth: true
+    });
+    
+}
