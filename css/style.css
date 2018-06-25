@@ -59,7 +59,7 @@ li {
 
 .spacex-logo {
   margin-top: 0; 
-  margin-bottom: 0;
+  margin-bottom: 3px;
   width: 350px;
   height: auto;
 }
@@ -67,7 +67,6 @@ li {
 .container {
 
 }
-
 .card {
   margin: 1rem;
   background: white;
@@ -85,7 +84,7 @@ li {
 }
 
 .grid-item { 
-  max-width: 400px;
+  width: 400px;
   height: auto;
   float: left;
   background: white;
@@ -94,7 +93,7 @@ li {
   box-shadow: 2px 4px 40px rgba(75, 75, 75, 0.1);
   transition: all .2s linear;
   overflow: hidden;
-  margin-bottom: 50px;
+  margin: 0 0 50px 0;
  }
 
 .grid-item:hover {
@@ -124,15 +123,13 @@ li {
 }
 .btn button:focus {outline:0;}
 
-.spacex-logo {
-  margin-bottom: 10px;
-}
-
 /* Media Queries */
 
-@media screen and (min-width: 100px) {
+@media only screen and (max-width: 460px) {
   .grid-item {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    width: 96%;
   }
 }
