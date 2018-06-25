@@ -191,3 +191,9 @@
     bottom: 95%;
     transform: rotate(180deg);
   }
+
+  @media only screen and (max-width: 460px) {
+    .star-1 {
+      top: 6.5%
+    }
+  }
