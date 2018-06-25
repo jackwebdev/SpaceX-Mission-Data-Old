@@ -257,8 +257,18 @@ function generateHtmlCard(type){
 
         const h4 = document.createElement('h4');
         h4.className = `next-launch`;
-        h4.innerHTML += `<strong>${MissionName}</strong> will use the <strong>${RocketName}</strong> and launch on <strong>${dateStringGB}</strong> at <strong>${time12Hour}</strong>`;
-
+    
+        //Check the kind of card. If it's past or latest and has the details show details, else show the upcoming time and date.
+        if(type === 'Latest' || type === 'Past'){
+            if(Details !== null){
+                h4.textContent = `${Details}`;
+                } else {
+                    h4.innerHTML = `Flight No: ${FlightNumber} launched the ${RocketName} on <strong>${dateStringGB}</strong> at <strong>${time12Hour}</strong>`;
+                }
+        } else {
+            h4.innerHTML += `<strong>${MissionName}</strong> will use the <strong>${RocketName}</strong> and launch on <strong>${dateStringGB}</strong> at <strong>${time12Hour}</strong>`;
+        }
+    
         const ul = document.createElement('ul');
         
         const li = document.createElement('ul');
