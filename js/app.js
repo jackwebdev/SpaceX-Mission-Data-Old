@@ -332,7 +332,7 @@ card.appendChild(img);
 card.appendChild(h4);
 }
 
-setTimeout(gridMasonry, 1000);
+setTimeout(gridMasonry, 1200);
     function gridMasonry(){
     return msnry = new Masonry( '.grid', {
         itemSelector: '.grid-item',
