@@ -39,6 +39,7 @@ const card = document.createElement('div');
 card.setAttribute('class', 'card');
 
 //Invoke the data from the spacexdata api and print to the DOM.
+setTimeout(loadingIcon, 100);
 upcomingLaunchRequest();
 latestLaunchRequest();
 pastLaunchRequest();
@@ -332,7 +333,20 @@ card.appendChild(img);
 card.appendChild(h4);
 }
 
-setTimeout(gridMasonry, 1200);
+function loadingIcon() {
+    const iconImg = document.createElement('img');
+    iconImg.className = 'iconImg';
+    iconImg.src = 'images/load_arrow.png';
+    root.appendChild(iconImg);
+
+    setTimeout(function(){
+        iconImg.style.display = 'none';
+    }, 850);
+}
+
+
+
+setTimeout(gridMasonry, 2000);
     function gridMasonry(){
     return msnry = new Masonry( '.grid', {
         itemSelector: '.grid-item',
