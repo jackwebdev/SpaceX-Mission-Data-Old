@@ -39,11 +39,10 @@ const card = document.createElement('div');
 card.setAttribute('class', 'card');
 
 //Invoke the data from the spacexdata api and print to the DOM.
-setTimeout(loadingIcon, 100);
+loadingIcon();
 upcomingLaunchRequest();
 latestLaunchRequest();
 pastLaunchRequest();
-
 
 /**** 
     Upcoming mission data
@@ -71,7 +70,7 @@ function upcomingLaunchRequest() {
     xhr.send();
 };
 // Load upcomingLaunch 1 second after we have recieved the data from the API
-setTimeout(upcomingLaunch, 1000);
+setTimeout(upcomingLaunch, 800);
 
 function upcomingLaunch() {
     
@@ -133,7 +132,7 @@ function latestLaunchRequest() {
     xhr.send();
 };
 // Load latestLaunch 1 second after we have recieved the data from the API
-setTimeout(latestLaunch, 1000);
+setTimeout(latestLaunch, 800);
 
 function latestLaunch() {
     
@@ -194,7 +193,7 @@ function pastLaunchRequest() {
     xhr.send();
 };
 // Load pastLaunch 1 second after we have recieved the data from the API
-setTimeout(pastLaunch, 1000);
+setTimeout(pastLaunch, 800);
 
 function pastLaunch() {
     // Loop through the past data in reverse and skip the latest mission.
@@ -344,9 +343,7 @@ function loadingIcon() {
     }, 850);
 }
 
-
-
-setTimeout(gridMasonry, 2000);
+setTimeout(gridMasonry, 1200);
     function gridMasonry(){
     return msnry = new Masonry( '.grid', {
         itemSelector: '.grid-item',
