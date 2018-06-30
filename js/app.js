@@ -88,7 +88,7 @@ function upcomingLaunch() {
             landsuccess = upcomingLaunchData[0]['rocket']['first_stage']['cores'][0]['land_success'];
             success = upcomingLaunchData[0]['launch_success'];
             videoLink = upcomingLaunchData[0]['links']['video_link'];
-            pressKit = upcomingLaunchData[0]['links']['pressKit'];
+            pressKit = upcomingLaunchData[0]['links']['presskit'];
             payloadType = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['payload_type'];
             payloadCustomer = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['customers'];
             payloadOrbit = upcomingLaunchData[0]['rocket']['second_stage']['payloads'][0]['orbit'];
@@ -149,7 +149,7 @@ function latestLaunch() {
             landsuccess = latestLaunchData['rocket']['first_stage']['cores'][0]['land_success'];
             success = latestLaunchData['launch_success'];
             videoLink = latestLaunchData['links']['video_link'];
-            pressKit = latestLaunchData['links']['pressKit'];
+            pressKit = latestLaunchData['links']['presskit'];
             payloadType = latestLaunchData['rocket']['second_stage']['payloads'][0]['payload_type'];
             payloadCustomer = latestLaunchData['rocket']['second_stage']['payloads'][0]['customers'];
             payloadOrbit = latestLaunchData['rocket']['second_stage']['payloads'][0]['orbit'];
@@ -209,7 +209,7 @@ function pastLaunch() {
             landsuccess = pastLaunchData[i]['rocket']['first_stage']['cores'][0]['land_success'];
             success = pastLaunchData[i]['launch_success'];
             videoLink = pastLaunchData[i]['links']['video_link'];
-            pressKit = pastLaunchData[i]['links']['pressKit'];
+            pressKit = pastLaunchData[i]['links']['presskit'];
             payloadType = pastLaunchData[i]['rocket']['second_stage']['payloads'][0]['payload_type'];
             payloadCustomer = pastLaunchData[i]['rocket']['second_stage']['payloads'][0]['customers'];
             payloadOrbit = pastLaunchData[i]['rocket']['second_stage']['payloads'][0]['orbit'];
