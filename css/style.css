@@ -91,6 +91,7 @@ li {
   display: block;
   text-align: center;
 }
+
 .btn button {
   border-radius: none;
   background-image: linear-gradient(90deg, #000428, #004e92);
@@ -105,9 +106,11 @@ li {
   text-align: center;
   cursor: pointer;
 }
+
 .btn button:hover {
   background-image: linear-gradient(90deg, #030f7e, #036dcb);
 }
+
 .btn button:focus {outline:0;}
 
 .iconImg {
@@ -117,6 +120,9 @@ li {
   animation: spin 1.3s linear infinite;
   transform-origin: 100% 20;
 }
+.success { color: green;}
+.fail { color: red; }
+
 /* Animation Keyframes */
 @keyframes spin {
   0%{
@@ -129,8 +135,6 @@ li {
     transform: rotate(360deg) scale(1.05);
   }
 }
-
-
 /* Media Queries */
 
 @media only screen and (max-width: 460px) {

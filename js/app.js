@@ -286,18 +286,18 @@ function generateHtmlCard(type){
          ul.innerHTML += `<li><strong>Payload Mass:</strong> ${payloadKG} kg</li>`;
         }
         
-        if(landsuccess !== null) {    
-            ul.innerHTML += `<li><strong>Land success:</strong> ${landsuccess}</li>`;
+        if(landsuccess === true) {    
+            ul.innerHTML += `<li><strong>Land success:</strong> <span class="success">${landsuccess}</span></li>`;
         } else if (landsuccess === false) {
-            ul.innerHTML += `<li><strong>Land success:</strong> ${landsuccess}</li>`;
-        } else {
-            ul.innerHTML += `<li><strong>Land success:</strong> No landing needed</li>`;
-        }
+            ul.innerHTML += `<li><strong>Land success:</strong> <span class="fail">${landsuccess}</span></li>`;
+        } 
         
-        if(success !== null) { 
-            ul.innerHTML += `<li><strong>Launch success:</strong> ${success}</li>`;
+        if(success === true) { 
+            ul.innerHTML += `<li><strong>Launch success:</strong> <span class="success">${success}</span></li>`;
 
-        };
+        } else if(success === false) {
+            ul.innerHTML += `<li><strong>Launch success:</strong> <span class="fail">${success}</span></li>`; 
+        }
         
         if(videoLink !== null) { 
          ul.innerHTML += `<li><a class="btn" href="${videoLink}" target="_blank"><button>WATCH STREAM</button></a></li>`;
